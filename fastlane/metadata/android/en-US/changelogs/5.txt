@@ -1,0 +1,1 @@
+Initial release. Enough Spent. lets you log an expense in 3 taps -- open, type, save. Supports 162 currencies with Travel Mode for locking one currency while you're abroad. Works fully offline. No account, no sign-up, no bank connections needed.

@@ -1,0 +1,1 @@
+Transaction details now show the actual date of the exchange rate used, not just the date you saved the expense.
