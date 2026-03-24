@@ -51,4 +51,14 @@ app.*.map.json
 .env.*.local
 secrets/
 key.properties
+*.jks
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Personal notes
+notes/
+
+# App store page content
+app_page/
 
