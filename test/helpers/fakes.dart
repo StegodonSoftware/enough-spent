@@ -174,6 +174,7 @@ class FakeSettingsRepository implements SettingsRepository {
   bool _isOnboarded = true;
   String? _lockedCurrencyCode;
   bool _conversionInProgress = false;
+  int _lastReviewedMilestone = 0;
 
   FakeSettingsRepository({
     String primaryCurrency = 'USD',
@@ -221,4 +222,11 @@ class FakeSettingsRepository implements SettingsRepository {
 
   @override
   void setConversionInProgress(bool value) => _conversionInProgress = value;
+
+  @override
+  int getLastReviewedMilestone() => _lastReviewedMilestone;
+
+  @override
+  void setLastReviewedMilestone(int milestone) =>
+      _lastReviewedMilestone = milestone;
 }

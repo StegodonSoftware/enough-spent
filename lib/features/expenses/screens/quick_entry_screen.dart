@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../ads/ad_service.dart';
+import '../../review/review_service.dart';
 import '../../ads/widgets/banner_ad_widget.dart';
 import '../../expenses/models/expense.dart';
 import '../../expenses/expense_controller.dart';
@@ -117,6 +118,13 @@ class _QuickEntryScreenState extends State<QuickEntryScreen> {
 
     // Record expense for interstitial tracking (shown when leaving screen)
     context.read<AdService>().recordExpenseSaved();
+
+    // Check if a review prompt milestone has been reached
+    final totalExpenses = context.read<ExpenseController>().all.length;
+    final reviewService = context.read<ReviewService>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) reviewService.maybePromptReview(context, totalExpenses);
+    });
 
     // Haptic feedback
     HapticFeedback.mediumImpact();

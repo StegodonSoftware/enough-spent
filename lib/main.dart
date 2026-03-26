@@ -21,6 +21,7 @@ import 'features/categories/data/hive_category_repository.dart';
 import 'features/locations/location_controller.dart';
 import 'features/locations/data/location_repository.dart';
 import 'features/locations/data/hive_location_repository.dart';
+import 'features/review/review_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,6 +59,8 @@ void main() async {
   // Create ad service and preload interstitial
   final adService = AdService();
   adService.loadInterstitial();
+
+  final reviewService = ReviewService(settingsRepository);
 
   // Create controllers with cross-references for cascade sync
   final converter = PrimaryCurrencyConverter(
@@ -113,6 +116,7 @@ void main() async {
         ChangeNotifierProvider.value(value: expenseController),
         ChangeNotifierProvider.value(value: categoryController),
         ChangeNotifierProvider.value(value: locationController),
+        Provider<ReviewService>.value(value: reviewService),
       ],
       child: SpendingTrackerApp(expenseRepository: expenseRepository),
     ),

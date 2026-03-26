@@ -8,6 +8,7 @@ class HiveSettingsRepository implements SettingsRepository {
   static const _onboardedKey = 'onboarded';
   static const _lockedCurrencyKey = 'lockedCurrencyCode';
   static const _conversionInProgressKey = 'conversionInProgress';
+  static const _reviewLastMilestoneKey = 'reviewLastMilestone';
   final Box _box;
 
   HiveSettingsRepository(this._box);
@@ -75,5 +76,15 @@ class HiveSettingsRepository implements SettingsRepository {
   @override
   void setConversionInProgress(bool value) {
     _box.put(_conversionInProgressKey, value);
+  }
+
+  @override
+  int getLastReviewedMilestone() {
+    return _box.get(_reviewLastMilestoneKey, defaultValue: 0);
+  }
+
+  @override
+  void setLastReviewedMilestone(int milestone) {
+    _box.put(_reviewLastMilestoneKey, milestone);
   }
 }

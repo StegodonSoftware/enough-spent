@@ -24,4 +24,9 @@ abstract class SettingsRepository {
   /// Used to detect and recover from interrupted conversions on next startup.
   bool getConversionInProgress();
   void setConversionInProgress(bool value);
+
+  /// Tracks the highest review milestone (expense count) at which the user
+  /// has already been prompted. 0 means never prompted.
+  int getLastReviewedMilestone();
+  void setLastReviewedMilestone(int milestone);
 }
